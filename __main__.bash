@@ -60,8 +60,6 @@ else
   if [ -n "$wall" ]; then
     "$SCRIPT_DIR"/swaybg.bash "$wall" >"$CACHE_DIR"/swaybg.log 2>&1
   fi
-  # ags
-  "$SCRIPT_DIR"/ags.bash -r >"$CACHE_DIR"/ags.log 2>&1
   # hyprland
   "$SCRIPT_DIR"/hyprland.bash >"$CACHE_DIR"/hyprland.log
   # terminal
@@ -72,4 +70,15 @@ else
   fi
   # kvantum
   "$SCRIPT_DIR"/kvantum.bash >"$CACHE_DIR"/kvantum.log 2>&1
+
+fi
+
+if $reload; then
+  # ags
+  "$SCRIPT_DIR"/ags.bash -r >"$CACHE_DIR"/ags.log 2>&1
+fi
+
+if $relaunch; then
+  # ags
+  "$SCRIPT_DIR"/ags.bash -R >"$CACHE_DIR"/ags.log 2>&1
 fi

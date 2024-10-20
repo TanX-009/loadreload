@@ -2,9 +2,10 @@
 
 reload=false
 launch=false
+relaunch=false
 
 usage() {
-  echo "Usage: $0 {-r | -l}"
+  echo "Usage: $0 {-r | -l | -R}"
   exit 1
 }
 
@@ -21,14 +22,21 @@ case $1 in
   echo "Launching..."
   launch=true
   ;;
+-R)
+  echo "Relaunching..."
+  relaunch=true
+  ;;
 *)
   usage
   ;;
 esac
 
-if $launch; then
+if $reload; then
+  ags run-js "handleStyles(false);"
+  ags run-js 'openColorScheme.value = true; Utils.timeout(2000, () => openColorScheme.value = false);'
+elif $launch; then
   ags &
-elif $reload; then
-  killall ags
+elif $relaunch; then
+  killall ags ydotool
   ags &
 fi
