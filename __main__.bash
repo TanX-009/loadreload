@@ -70,7 +70,8 @@ else
   fi
   # kvantum
   "$SCRIPT_DIR"/kvantum.bash >"$CACHE_DIR"/kvantum.log 2>&1
-
+  # nvim
+  "$SCRIPT_DIR"/nvim.bash >"$CACHE_DIR"/nvim.log 2>&1
 fi
 
 if $reload; then
